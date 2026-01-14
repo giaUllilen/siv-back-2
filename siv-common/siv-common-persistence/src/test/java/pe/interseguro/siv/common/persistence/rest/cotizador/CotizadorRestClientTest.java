@@ -39,17 +39,19 @@ public class CotizadorRestClientTest extends BaseTest {
 		ObtenerCorrelativoResponse response = cotizadorRestClient.generarCorrelativo();
 		ObjectMapper mapper = new ObjectMapper();
 		AsegurableResponse bean = null;
-		try {
-			bean = mapper.readValue(response.getMsg(), AsegurableResponse.class);
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (response != null && response.getMsg() != null) {
+			try {
+				bean = mapper.readValue(response.getMsg(), AsegurableResponse.class);
+			} catch (JsonParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		System.out.println("numeroCotizacion = " + gson.toJson(bean));
 		System.out.println("response = " + gson.toJson(response));
