@@ -255,7 +255,6 @@
     <!-- ........................................................................................ -->
 
     <build>
-        <testSourceDirectory>../tests</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
